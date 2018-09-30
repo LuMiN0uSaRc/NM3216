@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BallMovementScript : MonoBehaviour {
+    [SerializeField] float BallSpeed;
+
+    private Rigidbody2D _ballRigidBody;
+
+	// Use this for initialization
+	void Start () {
+        //Initial Velocity
+        _ballRigidBody = GetComponent<Rigidbody2D>();
+        //_ballRigidBody.velocity = Vector2.right * BallSpeed;
+
+        Invoke("GoBall", 3);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (collision.collider.CompareTag("Fence"))
+        //{
+        //    _ballRigidBody.AddForce(Vector2.left * 0.001f, ForceMode2D.Impulse);
+        //}
+    }
+
+    private void GoBall()
+    {
+        float rand = Random.Range(0, 2);
+        if (rand < 1)
+        {
+            _ballRigidBody.AddForce(new Vector2(0.01f, -0.03f));
+        }
+        else
+        {
+            _ballRigidBody.AddForce(new Vector2(-0.01f, -0.03f));
+        }
+    }
+
+    void ResetBall()
+    {
+        _ballRigidBody.velocity = Vector2.zero;
+        transform.position = Vector2.zero;
+    }
+
+    void RestartGame()
+    {
+        ResetBall();
+        Invoke("GoBall", 1);
+    }
+}
