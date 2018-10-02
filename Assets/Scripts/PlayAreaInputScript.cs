@@ -22,6 +22,7 @@ public class PlayAreaInputScript : MonoBehaviour {
 
     List<GameObject> wallPool;
     private int _numOfWalls;
+    private int[] _wallListPriority;
 
     // Use this for initialization
     void Start () {
@@ -86,6 +87,18 @@ public class PlayAreaInputScript : MonoBehaviour {
                 _numOfWalls--;
             }
         }
+    }
+
+    private void UpdateWallsPriorityList()
+    {
+        //Set second element to be first element
+        //set third element to be second element 
+    }
+
+    //Takes in last priority number to be added. The first number will only be removed if all 3 elements are full.
+    private void UpdateWallsPriorityList(int inLastPriority)
+    {
+        
     }
 
     public void TriggerGate(NumPad inKeyCode)
