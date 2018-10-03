@@ -22,7 +22,7 @@ public class PlayAreaInputScript : MonoBehaviour {
 
     List<GameObject> wallPool;
     private int _numOfWalls;
-    private int[] _wallListPriority;
+    private int[] _wallListPriority = new int[3];
 
     // Use this for initialization
     void Start () {
@@ -34,6 +34,9 @@ public class PlayAreaInputScript : MonoBehaviour {
             obj.SetActive(false);
             wallPool.Add(obj);
             obj.transform.SetParent(gameObject.transform, false);
+
+            //Initialize the list to -1
+            _wallListPriority[i] = -1;
         }
     }
 
@@ -43,6 +46,7 @@ public class PlayAreaInputScript : MonoBehaviour {
         {
             if (!wallPool[i].activeInHierarchy)
             {
+                UpdateWallsPriorityList(i);
                 return wallPool[i];
             }
         }
@@ -62,43 +66,32 @@ public class PlayAreaInputScript : MonoBehaviour {
         _numOfWalls++;
     }
 
-    private int CheckAvailableWalls()
-    {
-        for (int i = 0; i < wallPool.Count; i++)
-        {
-            if(wallPool[i].activeInHierarchy)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     private void DeactiveWall()
     {
         if (_numOfWalls == 3)
         {
-            int wallNumber = CheckAvailableWalls();
-
-
-            if (wallNumber != -1)
-            {
-                wallPool[wallNumber].SetActive(false);
-                _numOfWalls--;
-            }
+            wallPool[_wallListPriority[0]].SetActive(false);
+            _numOfWalls--;
+            UpdateWallsPriorityList();
         }
     }
 
     private void UpdateWallsPriorityList()
     {
         //Set second element to be first element
+        _wallListPriority[0] = _wallListPriority[1];
         //set third element to be second element 
+        _wallListPriority[1] = _wallListPriority[2];
+        //set third element to be -1
+        _wallListPriority[2] = -1;
     }
 
     //Takes in last priority number to be added. The first number will only be removed if all 3 elements are full.
     private void UpdateWallsPriorityList(int inLastPriority)
     {
-        
+        if (_wallListPriority[0] == -1) _wallListPriority[0] = inLastPriority;
+        else if (_wallListPriority[1] == -1) _wallListPriority[1] = inLastPriority;
+        else if (_wallListPriority[2] == -1) _wallListPriority[2] = inLastPriority;
     }
 
     public void TriggerGate(NumPad inKeyCode)

@@ -13,6 +13,11 @@ public class BallMovementScript : MonoBehaviour {
         _ballRigidBody = GetComponent<Rigidbody2D>();
         //_ballRigidBody.velocity = Vector2.right * BallSpeed;
 
+        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        for (int i = 0; i < balls.Length; i++)
+        {
+            Physics2D.IgnoreCollision(balls[i].GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
         Invoke("GoBall", 3);
     }
 
