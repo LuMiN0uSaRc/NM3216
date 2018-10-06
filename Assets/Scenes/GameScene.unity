@@ -551,7 +551,7 @@ Prefab:
     - target: {fileID: 114839301631799938, guid: 96f19db5bc8df76419cc621470c8c0d9,
         type: 2}
       propertyPath: BallSpeed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
       propertyPath: m_TagString

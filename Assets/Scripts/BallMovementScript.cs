@@ -12,7 +12,6 @@ public class BallMovementScript : MonoBehaviour {
 	void Start () {
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
-        //_ballRigidBody.velocity = Vector2.right * BallSpeed;
 
         GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
         for (int i = 0; i < balls.Length; i++)
@@ -33,15 +32,17 @@ public class BallMovementScript : MonoBehaviour {
 
     private void GoBall()
     {
-        float rand = Random.Range(0, 2);
-        if (rand < 1)
-        {
-            _ballRigidBody.AddForce(new Vector2(0.01f, -0.03f));
-        }
-        else
-        {
-            _ballRigidBody.AddForce(new Vector2(-0.01f, -0.03f));
-        }
+        _ballRigidBody.velocity = Vector2.right * BallSpeed;
+
+        //float rand = Random.Range(0, 2);
+        //if (rand < 1)
+        //{
+        //    _ballRigidBody.AddForce(new Vector2(0.01f, -0.03f));
+        //}
+        //else
+        //{
+        //    _ballRigidBody.AddForce(new Vector2(-0.01f, -0.03f));
+        //}
     }
 
     void ResetBall()
