@@ -551,11 +551,16 @@ Prefab:
     - target: {fileID: 114839301631799938, guid: 96f19db5bc8df76419cc621470c8c0d9,
         type: 2}
       propertyPath: BallSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
       propertyPath: m_TagString
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 50080810508115662, guid: 96f19db5bc8df76419cc621470c8c0d9,
+        type: 2}
+      propertyPath: m_Mass
+      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}

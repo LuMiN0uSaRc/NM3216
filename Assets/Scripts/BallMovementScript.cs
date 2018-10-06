@@ -7,6 +7,7 @@ public class BallMovementScript : MonoBehaviour {
 
     private Rigidbody2D _ballRigidBody;
     private int _bounceCount;
+    private Vector2 _initialDirection;
 
 	// Use this for initialization
 	void Start () {
@@ -26,34 +27,37 @@ public class BallMovementScript : MonoBehaviour {
         if (collision.collider.CompareTag("Fence"))
         {
             _bounceCount++;
+            if (_bounceCount == 10) SetBallSpeed(5);
+            if (_bounceCount == 20) SetBallSpeed(6);
+        
             //_ballRigidBody.AddForce(Vector2.left * 0.001f, ForceMode2D.Impulse);
         }
     }
 
     private void GoBall()
     {
-        _ballRigidBody.velocity = Vector2.right * BallSpeed;
+        float xDirection = Random.Range(-1f, 1f);
+        float yDirection = Random.Range(-1f, 1f);
 
-        //float rand = Random.Range(0, 2);
-        //if (rand < 1)
-        //{
-        //    _ballRigidBody.AddForce(new Vector2(0.01f, -0.03f));
-        //}
-        //else
-        //{
-        //    _ballRigidBody.AddForce(new Vector2(-0.01f, -0.03f));
-        //}
+        _initialDirection = new Vector2(xDirection, yDirection).normalized;
+        _ballRigidBody.AddForce(_initialDirection * BallSpeed);
     }
 
-    void ResetBall()
+    private void ResetBall()
     {
         _ballRigidBody.velocity = Vector2.zero;
         transform.position = Vector2.zero;
     }
 
-    void RestartGame()
+    private void RestartGame()
     {
         ResetBall();
         Invoke("GoBall", 1);
+    }
+
+    private void SetBallSpeed(int inBallSpeed)
+    {
+        BallSpeed = inBallSpeed;
+        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - inBallSpeed));
     }
 }
