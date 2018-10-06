@@ -6,6 +6,7 @@ public class BallMovementScript : MonoBehaviour {
     [SerializeField] float BallSpeed;
 
     private Rigidbody2D _ballRigidBody;
+    private int _bounceCount;
 
 	// Use this for initialization
 	void Start () {
@@ -23,10 +24,11 @@ public class BallMovementScript : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.collider.CompareTag("Fence"))
-        //{
-        //    _ballRigidBody.AddForce(Vector2.left * 0.001f, ForceMode2D.Impulse);
-        //}
+        if (collision.collider.CompareTag("Fence"))
+        {
+            _bounceCount++;
+            //_ballRigidBody.AddForce(Vector2.left * 0.001f, ForceMode2D.Impulse);
+        }
     }
 
     private void GoBall()
