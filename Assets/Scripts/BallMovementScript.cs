@@ -28,9 +28,7 @@ public class BallMovementScript : MonoBehaviour {
         {
             _bounceCount++;
             if (_bounceCount == 10) SetBallSpeed(5);
-            if (_bounceCount == 20) SetBallSpeed(6);
-        
-            //_ballRigidBody.AddForce(Vector2.left * 0.001f, ForceMode2D.Impulse);
+            if (_bounceCount == 20 ) SetBallSpeed(6);
         }
     }
 
