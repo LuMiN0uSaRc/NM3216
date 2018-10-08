@@ -2065,6 +2065,7 @@ GameObject:
   - component: {fileID: 1115182018}
   - component: {fileID: 1115182019}
   - component: {fileID: 1115182020}
+  - component: {fileID: 1115182021}
   m_Layer: 0
   m_Name: Green Circle
   m_TagString: Untagged
@@ -2143,7 +2144,18 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.2521996
+  m_Radius: 4.55
+--- !u!114 &1115182021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115182017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b8bdd2dc1c81e4a91c11bea26a125c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1176816213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2276,7 @@ GameObject:
   - component: {fileID: 1185553303}
   - component: {fileID: 1185553302}
   - component: {fileID: 1185553301}
+  - component: {fileID: 1185553304}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -2317,8 +2330,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2405,9 +2418,29 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: -2}
+  m_AnchoredPosition: {x: 1, y: -2}
   m_SizeDelta: {x: 11.8, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1185553304
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185553300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1 &1277646736
 GameObject:
   m_ObjectHideFlags: 0
