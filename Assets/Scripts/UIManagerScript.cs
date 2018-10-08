@@ -6,6 +6,9 @@ using TMPro;
 
 public class UIManagerScript : MonoBehaviour {
     [SerializeField] TextMeshProUGUI _timerTextField;
+    [SerializeField] GameObject _pauseScreenPrefab;
+
+    public static bool _gameOverCheck = false;
 
     private float _timeLeft = 3.0f;
 
@@ -38,19 +41,25 @@ public class UIManagerScript : MonoBehaviour {
 
     public void RestartLevel()
     {
+        _gameOverCheck = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void PauseGame()
     {
-        if (Time.timeScale == 1)
+        if (!_gameOverCheck)
         {
-            //game is playing
-            Time.timeScale = 0;
-        } 
-        else
-        {
-            ResumeGame();
+            if (Time.timeScale == 1)
+            {
+                //game is playing
+                Time.timeScale = 0;
+                _pauseScreenPrefab.SetActive(true);
+            }
+            else
+            {
+                ResumeGame();
+                _pauseScreenPrefab.SetActive(false);
+            }
         }
     }
 

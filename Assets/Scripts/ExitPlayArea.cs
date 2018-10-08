@@ -10,5 +10,6 @@ public class ExitPlayArea : MonoBehaviour {
     {
         Time.timeScale = 0;
         _gameOverText.gameObject.SetActive(true);
+        UIManagerScript._gameOverCheck = true;
     }
 }
