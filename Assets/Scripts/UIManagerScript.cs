@@ -9,7 +9,12 @@ public class UIManagerScript : MonoBehaviour {
 
     private float _timeLeft = 3.0f;
 
-	void Update () {
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
+    void Update () {
         if (_timerTextField != null)
         {
             _timeLeft -= Time.deltaTime;

@@ -1,21 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ExitPlayArea : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] TextMeshProUGUI _gameOverText;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Time.timeScale = 0;
+        _gameOverText.gameObject.SetActive(true);
     }
 }
