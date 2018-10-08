@@ -42,6 +42,10 @@ public class UIManagerScript : MonoBehaviour {
         {
             //game is playing
             Time.timeScale = 0;
+        } 
+        else
+        {
+            ResumeGame();
         }
     }
 
