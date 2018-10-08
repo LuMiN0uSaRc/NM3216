@@ -30,4 +30,27 @@ public class UIManagerScript : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PauseGame()
+    {
+        if (Time.timeScale == 1)
+        {
+            //game is playing
+            Time.timeScale = 0;
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (Time.timeScale == 0)
+        {
+            //game is paused, need to resume game
+            Time.timeScale = 1;
+        }
+    }
 }
