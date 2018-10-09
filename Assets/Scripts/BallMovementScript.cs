@@ -27,8 +27,10 @@ public class BallMovementScript : MonoBehaviour {
         if (collision.collider.CompareTag("Fence"))
         {
             _bounceCount++;
-            if (_bounceCount == 10) SetBallSpeed(5);
-            if (_bounceCount == 20 ) SetBallSpeed(6);
+            if (_bounceCount == 10 ) SetBallSpeed(5);
+            if (_bounceCount == 20 ) SetBallSpeed(8);
+            if (_bounceCount == 30 ) SetBallSpeed(10);
+            if (_bounceCount == 40 ) SetBallSpeed(14);
         }
     }
 
