@@ -12,7 +12,6 @@ public class BallMovementScript : MonoBehaviour {
 	void Start () {
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
-        Debug.Log(_ballRigidBody.velocity);
         Invoke("GoBall", 3);
     }
 
@@ -28,8 +27,8 @@ public class BallMovementScript : MonoBehaviour {
         {
             GameManager.Instance.BallBounceCount++;
             int bounceCount = GameManager.Instance.BallBounceCount;
-            if (bounceCount == 10 ) SpawnSheep();
-            if (bounceCount == 20 ) SpawnSheep();
+            if (bounceCount == 10 ) SetBallSpeed(6);
+            if (bounceCount == 20 ) SetBallSpeed(8);
             if (bounceCount == 30 ) SetBallSpeed(10);
             if (bounceCount == 40 ) SetBallSpeed(14);
             if (bounceCount == 50 ) SpawnSheep();

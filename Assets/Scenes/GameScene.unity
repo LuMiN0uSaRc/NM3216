@@ -1248,6 +1248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SheepPrefab: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9,
     type: 2}
+  BallBounceCount: 0
   playArea: {fileID: 855956099}
 --- !u!4 &391584847
 Transform:
