@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    public static GameManager Instance; 
+    public GameObject SheepPrefab;
+    public int BallBounceCount = 0;
+
     [SerializeField] PlayAreaInputScript playArea;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (!UIManagerScript._gameOverCheck)
         {
             if (Input.GetKeyDown(KeyCode.Z))

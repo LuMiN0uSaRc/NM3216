@@ -1009,7 +1009,7 @@ Prefab:
     - target: {fileID: 114839301631799938, guid: 96f19db5bc8df76419cc621470c8c0d9,
         type: 2}
       propertyPath: BallSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
       propertyPath: m_TagString
@@ -1058,6 +1058,12 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114839301631799938, guid: 96f19db5bc8df76419cc621470c8c0d9,
+        type: 2}
+      propertyPath: SheepPrefab
+      value: 
+      objectReference: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 60433503316451452, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
@@ -1240,6 +1246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cdb435c1b4af14690a1f9e6d5c3161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SheepPrefab: {fileID: 1012203825985942, guid: 96f19db5bc8df76419cc621470c8c0d9,
+    type: 2}
   playArea: {fileID: 855956099}
 --- !u!4 &391584847
 Transform:

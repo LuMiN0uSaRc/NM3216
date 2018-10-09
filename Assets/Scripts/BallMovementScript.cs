@@ -6,31 +6,39 @@ public class BallMovementScript : MonoBehaviour {
     [SerializeField] float BallSpeed;
 
     private Rigidbody2D _ballRigidBody;
-    private int _bounceCount;
     private Vector2 _initialDirection;
 
 	// Use this for initialization
 	void Start () {
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
-
-        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-        for (int i = 0; i < balls.Length; i++)
-        {
-            Physics2D.IgnoreCollision(balls[i].GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
+        Debug.Log(_ballRigidBody.velocity);
         Invoke("GoBall", 3);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        //for (int i = 0; i < balls.Length; i++)
+        //{
+        //    Physics2D.IgnoreCollision(balls[i].GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //}
+
         if (collision.collider.CompareTag("Fence"))
         {
-            _bounceCount++;
-            if (_bounceCount == 10 ) SetBallSpeed(5);
-            if (_bounceCount == 20 ) SetBallSpeed(8);
-            if (_bounceCount == 30 ) SetBallSpeed(10);
-            if (_bounceCount == 40 ) SetBallSpeed(14);
+            GameManager.Instance.BallBounceCount++;
+            int bounceCount = GameManager.Instance.BallBounceCount;
+            if (bounceCount == 10 ) SpawnSheep();
+            if (bounceCount == 20 ) SpawnSheep();
+            if (bounceCount == 30 ) SetBallSpeed(10);
+            if (bounceCount == 40 ) SetBallSpeed(14);
+            if (bounceCount == 50 ) SpawnSheep();
+            if (bounceCount == 80 ) SpawnSheep();
+        }
+
+        if (collision.collider.CompareTag("Ball"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
 
@@ -59,5 +67,13 @@ public class BallMovementScript : MonoBehaviour {
     {
         BallSpeed = inBallSpeed;
         _ballRigidBody.AddForce(_initialDirection * (BallSpeed - inBallSpeed));
+    }
+
+    private void SpawnSheep()
+    {
+        GameObject sheepObj = Instantiate(GameManager.Instance.SheepPrefab);
+        sheepObj.transform.SetParent(gameObject.transform.parent);
+        sheepObj.transform.position = new Vector2();
+        sheepObj.transform.localScale = gameObject.transform.localScale;
     }
 }
