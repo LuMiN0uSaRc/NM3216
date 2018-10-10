@@ -27,10 +27,10 @@ public class BallMovementScript : MonoBehaviour {
         {
             GameManager.Instance.BallBounceCount++;
             int bounceCount = GameManager.Instance.BallBounceCount;
-            if (bounceCount == 10 ) SetBallSpeed(6);
-            if (bounceCount == 20 ) SetBallSpeed(8);
-            if (bounceCount == 30 ) SetBallSpeed(10);
-            if (bounceCount == 40 ) SetBallSpeed(14);
+            if (bounceCount == 10 ) SetBallSpeed(5);
+            if (bounceCount == 20 ) SetBallSpeed(6);
+            if (bounceCount == 30 ) SetBallSpeed(8);
+            if (bounceCount == 40 ) SetBallSpeed(10);
             if (bounceCount == 50 ) SpawnSheep();
             if (bounceCount == 80 ) SpawnSheep();
         }
@@ -64,8 +64,9 @@ public class BallMovementScript : MonoBehaviour {
 
     private void SetBallSpeed(int inBallSpeed)
     {
+        float intialSpeed = BallSpeed;
         BallSpeed = inBallSpeed;
-        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - inBallSpeed));
+        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - intialSpeed));
     }
 
     private void SpawnSheep()
