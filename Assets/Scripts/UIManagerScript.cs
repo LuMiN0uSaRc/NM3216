@@ -7,6 +7,7 @@ using TMPro;
 public class UIManagerScript : MonoBehaviour {
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
+    [SerializeField] GameObject _tutorialPrefab;
 
     public static bool _gameOverCheck = false;
 
@@ -70,5 +71,15 @@ public class UIManagerScript : MonoBehaviour {
             //game is paused, need to resume game
             Time.timeScale = 1;
         }
+    }
+
+    public void OpenTutorialPanel()
+    {
+        _tutorialPrefab.SetActive(true);
+    }
+
+    public void CloseTutorialPanel()
+    {
+        _tutorialPrefab.SetActive(false);
     }
 }
