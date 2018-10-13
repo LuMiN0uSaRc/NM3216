@@ -22,7 +22,8 @@ public class UIManagerScript : MonoBehaviour {
         if (_timerTextField != null)
         {
             _timeLeft -= Time.deltaTime;
-            _timerTextField.text = (_timeLeft > 0) ? (_timeLeft).ToString("0") : "Start!";
+            Debug.Log(_timeLeft);
+            _timerTextField.text = (_timeLeft >= 1) ? (_timeLeft).ToString("0") : "Start!";
             if (_timeLeft < 0)
             {
                 _timerTextField.gameObject.SetActive(false);
