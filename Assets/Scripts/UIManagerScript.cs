@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManagerScript : MonoBehaviour {
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
+    [SerializeField] GameObject _mainMenuPrefab;
     [SerializeField] GameObject _tutorialPrefab;
+    [SerializeField] GameObject _selectModePrefab;
 
     public static bool _gameOverCheck = false;
 
     private float _timeLeft = 3.0f;
+    private Button _currentSelectedButton;
+    private string _currentSelectedGameMode;
 
     private void Start()
     {
@@ -82,5 +87,16 @@ public class UIManagerScript : MonoBehaviour {
     public void CloseTutorialPanel()
     {
         _tutorialPrefab.SetActive(false);
+    }
+
+    public void OpenSetModePanel()
+    {
+        _mainMenuPrefab.SetActive(false);
+        _selectModePrefab.SetActive(true);
+    }
+
+    public void UpdateCurrentSelectedButton(string inDifficulty)
+    {
+        _currentSelectedGameMode = inDifficulty;
     }
 }
