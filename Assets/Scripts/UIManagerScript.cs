@@ -11,6 +11,7 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _mainMenuPrefab;
     [SerializeField] GameObject _tutorialPrefab;
     [SerializeField] GameObject _selectModePrefab;
+    [SerializeField] GameObject _startGameButton;
 
     public static bool _gameOverCheck = false;
 
