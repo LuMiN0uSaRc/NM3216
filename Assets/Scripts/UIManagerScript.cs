@@ -12,12 +12,12 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _tutorialPrefab;
     [SerializeField] GameObject _selectModePrefab;
     [SerializeField] GameObject _startGameButton;
+    [SerializeField] GameObject _keyBindings;
 
     public static bool _gameOverCheck = false;
 
     private float _timeLeft = 3.0f;
     private Button _currentSelectedButton;
-    private string _currentSelectedGameMode;
 
     private void Start()
     {
@@ -28,7 +28,6 @@ public class UIManagerScript : MonoBehaviour {
         if (_timerTextField != null)
         {
             _timeLeft -= Time.deltaTime;
-            Debug.Log(_timeLeft);
             _timerTextField.text = (_timeLeft >= 1) ? (_timeLeft).ToString("0") : "Start!";
             if (_timeLeft < 0)
             {
@@ -98,6 +97,41 @@ public class UIManagerScript : MonoBehaviour {
 
     public void UpdateCurrentSelectedButton(string inDifficulty)
     {
-        _currentSelectedGameMode = inDifficulty;
+        PlayerPrefs.SetString("Difficulty", inDifficulty);
+        _startGameButton.SetActive(true);
+    }
+
+    public void OpenKeyBindingsPanel()
+    {
+        if (!_gameOverCheck)
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                _keyBindings.SetActive(true);
+                for (int i = 0; i < 8; i++)
+                {
+                    KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                Time.timeScale = 1;
+                _keyBindings.SetActive(false);
+                if (KeyBindings.Instance._currentKey != null)
+                {
+                    KeyBindings.Instance._currentKey.GetComponent<Button>().interactable = true;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    public void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!UIManagerScript._gameOverCheck)
+        if (!UIManagerScript._gameOverCheck && Time.timeScale == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["1"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.ONE);
             }
