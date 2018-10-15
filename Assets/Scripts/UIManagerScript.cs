@@ -18,7 +18,7 @@ public class UIManagerScript : MonoBehaviour {
     public static bool _gameOverCheck = false;
 
     private float _timeLeft = 3.0f;
-    private Button _currentSelectedButton;
+    private GameObject _currentSelectedButton;
 
     private void Start()
     {
