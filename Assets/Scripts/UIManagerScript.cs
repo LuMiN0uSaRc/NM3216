@@ -13,6 +13,7 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _selectModePrefab;
     [SerializeField] GameObject _startGameButton;
     [SerializeField] GameObject _keyBindings;
+    [SerializeField] GameObject _keyBindingsCloseButton;
 
     public static bool _gameOverCheck = false;
 
@@ -101,7 +102,7 @@ public class UIManagerScript : MonoBehaviour {
         _startGameButton.SetActive(true);
     }
 
-    public void OpenKeyBindingsPanel()
+    public void OpenCloseKeyBindingsPanel()
     {
         if (!_gameOverCheck)
         {
@@ -109,6 +110,7 @@ public class UIManagerScript : MonoBehaviour {
             {
                 Time.timeScale = 0;
                 _keyBindings.SetActive(true);
+                _keyBindingsCloseButton.SetActive(true);
                 for (int i = 0; i < 8; i++)
                 {
                     KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(false);
@@ -118,6 +120,7 @@ public class UIManagerScript : MonoBehaviour {
             {
                 Time.timeScale = 1;
                 _keyBindings.SetActive(false);
+                _keyBindingsCloseButton.SetActive(false);
                 if (KeyBindings.Instance._currentKey != null)
                 {
                     KeyBindings.Instance._currentKey.GetComponent<Button>().interactable = true;

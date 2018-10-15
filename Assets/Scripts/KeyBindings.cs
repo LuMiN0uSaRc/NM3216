@@ -51,6 +51,7 @@ public class KeyBindings : MonoBehaviour {
                     _currentListOfKeys[_currentKey.name] = e.keyCode;
                     _currentKey.transform.Find("Letter").GetComponent<TextMeshProUGUI>().text = e.keyCode.ToString();
                     _currentListOfKeys[_currentKey.name] = e.keyCode;
+                    ListOfKeysText[System.Convert.ToInt32(_currentKey.name)-1].text = e.keyCode.ToString();
                     _currentKey.GetComponent<Button>().interactable = true;
                     _currentKey = null;
                 } 

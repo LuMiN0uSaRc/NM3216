@@ -22,31 +22,31 @@ public class GameManager : MonoBehaviour {
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.ONE);
             }
-            else if (Input.GetKeyDown(KeyCode.X))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["2"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.TWO);
             }
-            else if (Input.GetKeyDown(KeyCode.C))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["3"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.THREE);
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["4"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.FOUR);
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["5"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.SIX);
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["6"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.SEVEN);
             }
-            else if (Input.GetKeyDown(KeyCode.W))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["7"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.EIGHT);
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyBindings.Instance._currentListOfKeys["8"]))
             {
                 playArea.TriggerGate(PlayAreaInputScript.NumPad.NINE);
             }
