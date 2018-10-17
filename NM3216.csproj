@@ -251,7 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallMovementScript.cs" />
-    <Compile Include="Assets\Scripts\ExitPlayArea.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\KeyBindings.cs" />
     <Compile Include="Assets\Scripts\PlayAreaInputScript.cs" />

@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BallMovementScript : MonoBehaviour {
     [SerializeField] float BallSpeed;
+    [SerializeField] TextMeshProUGUI _gameOverText;
+    [SerializeField] AudioSource _bgm;
+
+    public AudioClip GameOverBgm;
 
     private Rigidbody2D _ballRigidBody;
     private Vector2 _initialDirection;
@@ -84,6 +89,15 @@ public class BallMovementScript : MonoBehaviour {
     private void OnCollisionExit2D(Collision2D collision)
     {
         _ifCollided = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Time.timeScale = 0;
+        _gameOverText.gameObject.SetActive(true);
+        UIManagerScript._gameOverCheck = true;
+        _bgm.GetComponent<AudioSource>().clip = GameOverBgm;
+        _bgm.GetComponent<AudioSource>().Play();
     }
 
     private void GoBall()
