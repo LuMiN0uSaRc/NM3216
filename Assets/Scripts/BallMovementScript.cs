@@ -23,11 +23,6 @@ public class BallMovementScript : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-        //for (int i = 0; i < balls.Length; i++)
-        //{
-        //    Physics2D.IgnoreCollision(balls[i].GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        //}
         if (!_ifCollided)
         {
             if (collision.collider.CompareTag("Fence"))
@@ -42,15 +37,24 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(6);
-                    if (bounceCount == 30) SetBallSpeed(8);
-                    if (bounceCount == 40) SetBallSpeed(10);
-                    if (bounceCount == 100) SpawnSheep();
-                    if (bounceCount == 200) SpawnSheep();
-                    if (bounceCount == 240) SetBallSpeed(11);
-                    if (bounceCount == 280) SetBallSpeed(12);
-                    if (bounceCount == 350) SetBallSpeed(15);
+                    Debug.Log("EASY");
+                    if (bounceCount == 1) SetBallSpeed(5);
+                    if (bounceCount == 20) SetBallSpeed(7);
+                    if (bounceCount == 30) SetBallSpeed(9);
+                    if (bounceCount == 50)
+                    {
+                        SpawnSheep();
+                        SetAllBallsSpeed(4);
+                    }
+                    if (bounceCount == 75) SetAllBallsSpeed(5);
+                    if (bounceCount == 100) SetAllBallsSpeed(7);
+                    if (bounceCount == 150) SetAllBallsSpeed(9);
+                    if (bounceCount == 175)
+                    {
+                        SpawnSheep();
+                        SetAllBallsSpeed(4);
+                    }
+                    if (bounceCount == 200) SetAllBallsSpeed(6);
                 }
                 else if (difficulty == "Medium")
                 {
@@ -124,15 +128,30 @@ public class BallMovementScript : MonoBehaviour {
     private void SetBallSpeed(int inBallSpeed)
     {
         float intialSpeed = BallSpeed;
+        Debug.Log("OLD: " + BallSpeed);
         BallSpeed = inBallSpeed;
+        Debug.Log("NEW: " + BallSpeed);
         _ballRigidBody.AddForce(_initialDirection * (BallSpeed - intialSpeed));
+    }
+
+    private void SetAllBallsSpeed(int inBallSpeed)
+    {
+        GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
+        for (int i = 0; i < allBalls.Length; i++)
+        {
+            allBalls[i].GetComponent<BallMovementScript>().SetBallSpeed(inBallSpeed);
+        }
     }
 
     private void SpawnSheep()
     {
-        GameObject sheepObj = Instantiate(GameManager.Instance.SheepPrefab);
-        sheepObj.transform.SetParent(gameObject.transform.parent);
-        sheepObj.transform.position = new Vector2();
-        sheepObj.transform.localScale = gameObject.transform.localScale;
+        if (GameManager.Instance.NumOfSheeps < 3)
+        {
+            GameObject sheepObj = Instantiate(GameManager.Instance.SheepPrefab);
+            sheepObj.transform.SetParent(gameObject.transform.parent);
+            sheepObj.transform.position = new Vector2();
+            sheepObj.transform.localScale = gameObject.transform.localScale;
+            GameManager.Instance.NumOfSheeps++;
+        }
     }
 }

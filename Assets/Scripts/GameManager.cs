@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance; 
     public GameObject SheepPrefab;
     public int BallBounceCount = 0;
+    public int NumOfSheeps = 1;
     public TextMeshProUGUI _numberOfBounces;
     public TextMeshProUGUI _speedOfCharacter;
 
