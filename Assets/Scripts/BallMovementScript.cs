@@ -46,47 +46,72 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(7);
-                    if (bounceCount == 30) SetBallSpeed(9);
-                    if (bounceCount == 50)
+                    if (bounceCount == 5) SetBallSpeed(3);
+                    if (bounceCount == 10) SetBallSpeed(4);
+                    if (bounceCount == 15) SetBallSpeed(5);
+                    if (bounceCount == 20) SetBallSpeed(6);
+                    if (bounceCount == 25)
+                    {     
+                        SpawnSheep();
+                        SetBallSpeed(2);
+                    };
+
+                    if (bounceCount == 45) SetBallSpeed(3);
+                    if (bounceCount == 70) SetBallSpeed(5);
+                    if (bounceCount == 90)
                     {
                         SpawnSheep();
-                        SetBallSpeed(4);
-                    }
-                    if (bounceCount == 75) SetBallSpeed(5);
-                    if (bounceCount == 100) SetBallSpeed(7);
-                    if (bounceCount == 150) SetBallSpeed(9);
-                    if (bounceCount == 175)
-                    {
-                        SpawnSheep();
-                        SetBallSpeed(4);
-                    }
-                    if (bounceCount == 200) SetBallSpeed(6);
+                        SetBallSpeed(2);
+                    };
+                    if (bounceCount == 110) SetBallSpeed(3);
+                    if (bounceCount == 150) SetBallSpeed(5);
+
                 }
+
                 else if (difficulty == "Medium")
                 {
+                    if (bounceCount == 5) SetBallSpeed(4);
                     if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(6);
-                    if (bounceCount == 30) SetBallSpeed(8);
-                    if (bounceCount == 40) SetBallSpeed(10);
-                    if (bounceCount == 50) SpawnSheep();
-                    if (bounceCount == 80) SpawnSheep();
-                    if (bounceCount == 120) SetBallSpeed(11);
-                    if (bounceCount == 160) SetBallSpeed(12);
-                    if (bounceCount == 200) SetBallSpeed(15);
+                    if (bounceCount == 20) SetBallSpeed(7);
+                    if (bounceCount == 25)
+                    {
+
+                        SpawnSheep();
+                        SetBallSpeed(3);
+                    }
+                    if (bounceCount == 40) SetBallSpeed(3);
+                    if (bounceCount == 60) SetBallSpeed(5);
+                    if (bounceCount == 80) SetBallSpeed(7);
+                    if (bounceCount == 100)
+                    {
+
+                        SpawnSheep();
+                        SetBallSpeed(2);
+                    }
+
                 }
                 else if (difficulty == "Hard")
                 {
+                    if (bounceCount == 5) SetBallSpeed(4);
                     if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 20) SpawnSheep();
-                    if (bounceCount == 30) SetBallSpeed(8);
-                    if (bounceCount == 40) SetBallSpeed(10);
-                    if (bounceCount == 50) SetBallSpeed(12);
-                    if (bounceCount == 80) SetBallSpeed(15);
-                    if (bounceCount == 120) SpawnSheep();
-                    if (bounceCount == 160) SetBallSpeed(18);
-                    if (bounceCount == 200) SetBallSpeed(20);
+                    if (bounceCount == 15) SetBallSpeed(7);
+                    if (bounceCount == 25) SetBallSpeed(9);
+                    if (bounceCount == 30)
+                    {
+
+                        SpawnSheep();
+                        SetBallSpeed(3);
+                    }
+                    if (bounceCount == 40) SetBallSpeed(4);
+                    if (bounceCount == 50) SetBallSpeed(6);
+                    if (bounceCount == 75) SetBallSpeed(8);
+                    if (bounceCount == 100)
+                    {
+
+                        SpawnSheep();
+                        SetBallSpeed(3);
+                    }
+
                 }
             }
 
@@ -112,7 +137,8 @@ public class BallMovementScript : MonoBehaviour {
 
     private void GoBall()
     {
-        _ballRigidBody.AddForce(_initialDirection * BallSpeed);
+        //_ballRigidBody.AddForce(_initialDirection * BallSpeed);
+        _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
     }
 
     private void ResetBall()
@@ -131,7 +157,9 @@ public class BallMovementScript : MonoBehaviour {
     {
         float initialSpeed = BallSpeed;
         BallSpeed = inBallSpeed;
-        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - initialSpeed));
+        //_ballRigidBody.AddForce(_initialDirection * (BallSpeed - initialSpeed));
+        _ballRigidBody.velocity = _initialDirection.normalized * inBallSpeed;
+        //_ballRigidBody.velocity = _ballRigidBody.velocity.normalized * (BallSpeed - initialSpeed);
     }
 
     private void SpawnSheep()
