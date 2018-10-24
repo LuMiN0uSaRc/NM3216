@@ -5,10 +5,6 @@ using TMPro;
 
 public class BallMovementScript : MonoBehaviour {
     [SerializeField] float BallSpeed;
-    [SerializeField] TextMeshProUGUI _gameOverText;
-    [SerializeField] AudioSource _bgm;
-
-    public AudioClip GameOverBgm;
 
     private Rigidbody2D _ballRigidBody;
     private Vector2 _initialDirection;
@@ -56,9 +52,9 @@ public class BallMovementScript : MonoBehaviour {
                     if (bounceCount == 175)
                     {
                         SpawnSheep();
-                        SetAllBallsSpeed(4);
+                        SetBallSpeed(4);
                     }
-                    if (bounceCount == 200) SetAllBallsSpeed(6);
+                    if (bounceCount == 200) SetBallSpeed(6);
                 }
                 else if (difficulty == "Medium")
                 {
@@ -86,10 +82,10 @@ public class BallMovementScript : MonoBehaviour {
                 }
             }
 
-            if (collision.collider.CompareTag("Ball"))
-            {
-                Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-            }
+            //if (collision.collider.CompareTag("Ball"))
+            //{
+            //    Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            //}
         }
         _ifCollided = true;
     }
@@ -102,10 +98,8 @@ public class BallMovementScript : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         Time.timeScale = 0;
-        _gameOverText.gameObject.SetActive(true);
         UIManagerScript._gameOverCheck = true;
-        _bgm.GetComponent<AudioSource>().clip = GameOverBgm;
-        _bgm.GetComponent<AudioSource>().Play();
+        UIManagerScript.Instance.OpenGameOverPanel();
     }
 
     private void GoBall()

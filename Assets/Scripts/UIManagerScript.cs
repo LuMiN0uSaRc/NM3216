@@ -6,6 +6,9 @@ using UnityEngine.UI;
 using TMPro;
 
 public class UIManagerScript : MonoBehaviour {
+    public AudioClip GameOverBgm;
+    public static UIManagerScript Instance;
+
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
     [SerializeField] GameObject _mainMenuPrefab;
@@ -14,11 +17,18 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _startGameButton;
     [SerializeField] GameObject _keyBindings;
     [SerializeField] GameObject _keyBindingsCloseButton;
+    [SerializeField] GameObject _gameOverPanel;
+    [SerializeField] AudioSource _bgm;
 
     public static bool _gameOverCheck = false;
 
     private float _timeLeft = 3.0f;
     private GameObject _currentSelectedButton;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -133,8 +143,17 @@ public class UIManagerScript : MonoBehaviour {
         }
     }
 
+    public void OpenGameOverPanel()
+    {
+        _gameOverPanel.SetActive(true);
+        _bgm.GetComponent<AudioSource>().clip = GameOverBgm;
+        _bgm.GetComponent<AudioSource>().Play();
+    }
+
     public void OnApplicationQuit()
     {
         PlayerPrefs.DeleteAll();
+        _bgm.GetComponent<AudioSource>().clip = GameOverBgm;
+        _bgm.GetComponent<AudioSource>().Play();
     }
 }
