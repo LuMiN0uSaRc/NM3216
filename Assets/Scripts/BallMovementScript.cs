@@ -46,11 +46,11 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    if (bounceCount == 5) SetBallSpeed(3);
-                    if (bounceCount == 10) SetBallSpeed(4);
-                    if (bounceCount == 15) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(6);
-                    if (bounceCount == 25)
+                    if (bounceCount == 1) SetBallSpeed(3);
+                    if (bounceCount == 2) SetBallSpeed(4);
+                    if (bounceCount == 3) SetBallSpeed(5);
+                    if (bounceCount == 4) SetBallSpeed(6);
+                    if (bounceCount == 5)
                     {     
                         SpawnSheep();
                         SetBallSpeed(2);
