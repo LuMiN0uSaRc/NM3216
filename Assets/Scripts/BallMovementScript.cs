@@ -11,6 +11,9 @@ public class BallMovementScript : MonoBehaviour {
     private bool _ifCollided = false;
     private AudioSource _audioSource;
 
+    //when fence appears, push the sheep back in
+    //when sheep exits the area, gameover!
+
 	// Use this for initialization
 	void Start () {
         _audioSource = GetComponent<AudioSource>();
@@ -46,11 +49,11 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    if (bounceCount == 1) SetBallSpeed(3);
-                    if (bounceCount == 2) SetBallSpeed(4);
-                    if (bounceCount == 3) SetBallSpeed(5);
-                    if (bounceCount == 4) SetBallSpeed(6);
-                    if (bounceCount == 5)
+                    if (bounceCount == 5) SetBallSpeed(3);
+                    if (bounceCount == 10) SetBallSpeed(4);
+                    if (bounceCount == 15) SetBallSpeed(5);
+                    if (bounceCount == 20) SetBallSpeed(6);
+                    if (bounceCount == 25)
                     {     
                         SpawnSheep();
                         SetBallSpeed(2);
