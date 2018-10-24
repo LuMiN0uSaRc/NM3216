@@ -153,7 +153,7 @@ public class BallMovementScript : MonoBehaviour {
         Invoke("GoBall", 1);
     }
 
-    private void SetBallSpeed(int inBallSpeed)
+    private void SetBallSpeed(float inBallSpeed)
     {
         float initialSpeed = BallSpeed;
         BallSpeed = inBallSpeed;
