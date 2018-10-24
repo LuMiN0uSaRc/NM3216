@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public GameObject SheepPrefab;
     public int BallBounceCount = 0;
     public int NumOfSheeps = 1;
+    public int numOfSoundPlaying = 0;
     public TextMeshProUGUI _numberOfBounces;
     public TextMeshProUGUI _speedOfCharacter;
 

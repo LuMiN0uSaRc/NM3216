@@ -9,9 +9,11 @@ public class BallMovementScript : MonoBehaviour {
     private Rigidbody2D _ballRigidBody;
     private Vector2 _initialDirection;
     private bool _ifCollided = false;
+    private AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start () {
+        _audioSource = GetComponent<AudioSource>();
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
         float xDirection = Random.Range(-1f, 1f);
@@ -29,6 +31,12 @@ public class BallMovementScript : MonoBehaviour {
             if (collision.collider.CompareTag("Fence"))
             {
                 GameManager.Instance.BallBounceCount++;
+                if (GameManager.Instance.numOfSoundPlaying < 2)
+                {
+                    Invoke("IfAudioFinished", _audioSource.clip.length);
+                    _audioSource.Play();
+                    GameManager.Instance.numOfSoundPlaying++;
+                }
                 int bounceCount = GameManager.Instance.BallBounceCount;
 
                 //Update string 
@@ -136,5 +144,10 @@ public class BallMovementScript : MonoBehaviour {
             sheepObj.transform.localScale = gameObject.transform.localScale;
             GameManager.Instance.NumOfSheeps++;
         }
+    }
+
+    private void IfAudioFinished()
+    {
+        GameManager.Instance.numOfSoundPlaying--;
     }
 }
