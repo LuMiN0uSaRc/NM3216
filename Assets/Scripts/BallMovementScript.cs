@@ -18,6 +18,11 @@ public class BallMovementScript : MonoBehaviour {
 	void Start () {
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
+        float xDirection = Random.Range(-1f, 1f);
+        float yDirection = Random.Range(-1f, 1f);
+
+        _initialDirection = new Vector2(xDirection, yDirection).normalized;
+
         Invoke("GoBall", 3);
     }
 
@@ -37,18 +42,17 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    Debug.Log("EASY");
                     if (bounceCount == 1) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(7);
-                    if (bounceCount == 30) SetBallSpeed(9);
-                    if (bounceCount == 50)
+                    if (bounceCount == 2) SetBallSpeed(7);
+                    if (bounceCount == 3) SetBallSpeed(9);
+                    if (bounceCount == 5)
                     {
                         SpawnSheep();
-                        SetAllBallsSpeed(4);
+                        SetBallSpeed(4);
                     }
-                    if (bounceCount == 75) SetAllBallsSpeed(5);
-                    if (bounceCount == 100) SetAllBallsSpeed(7);
-                    if (bounceCount == 150) SetAllBallsSpeed(9);
+                    if (bounceCount == 75) SetBallSpeed(5);
+                    if (bounceCount == 100) SetBallSpeed(7);
+                    if (bounceCount == 150) SetBallSpeed(9);
                     if (bounceCount == 175)
                     {
                         SpawnSheep();
@@ -106,10 +110,6 @@ public class BallMovementScript : MonoBehaviour {
 
     private void GoBall()
     {
-        float xDirection = Random.Range(-1f, 1f);
-        float yDirection = Random.Range(-1f, 1f);
-
-        _initialDirection = new Vector2(xDirection, yDirection).normalized;
         _ballRigidBody.AddForce(_initialDirection * BallSpeed);
     }
 
@@ -127,20 +127,9 @@ public class BallMovementScript : MonoBehaviour {
 
     private void SetBallSpeed(int inBallSpeed)
     {
-        float intialSpeed = BallSpeed;
-        Debug.Log("OLD: " + BallSpeed);
+        float initialSpeed = BallSpeed;
         BallSpeed = inBallSpeed;
-        Debug.Log("NEW: " + BallSpeed);
-        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - intialSpeed));
-    }
-
-    private void SetAllBallsSpeed(int inBallSpeed)
-    {
-        GameObject[] allBalls = GameObject.FindGameObjectsWithTag("Ball");
-        for (int i = 0; i < allBalls.Length; i++)
-        {
-            allBalls[i].GetComponent<BallMovementScript>().SetBallSpeed(inBallSpeed);
-        }
+        _ballRigidBody.AddForce(_initialDirection * (BallSpeed - initialSpeed));
     }
 
     private void SpawnSheep()
