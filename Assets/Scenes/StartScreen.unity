@@ -1765,6 +1765,17 @@ MonoBehaviour:
           m_StringArgument: Medium
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1536934289}
+        m_MethodName: SetCurrentDifficultyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1061960628}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1061960629
@@ -2580,6 +2591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e5eb49e476cfb46b47a6f8f8b1887f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverBgm: {fileID: 0}
+  CurrentDifficultyButton: {fileID: 0}
   _timerTextField: {fileID: 0}
   _pauseScreenPrefab: {fileID: 0}
   _mainMenuPrefab: {fileID: 762440346}
@@ -2588,6 +2601,8 @@ MonoBehaviour:
   _startGameButton: {fileID: 546348197}
   _keyBindings: {fileID: 0}
   _keyBindingsCloseButton: {fileID: 0}
+  _gameOverPanel: {fileID: 0}
+  _bgm: {fileID: 0}
 --- !u!1 &1563666551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2928,6 +2943,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Hard
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1536934289}
+        m_MethodName: SetCurrentDifficultyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1692210137}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3647,6 +3673,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Easy
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1536934289}
+        m_MethodName: SetCurrentDifficultyButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2007762909}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

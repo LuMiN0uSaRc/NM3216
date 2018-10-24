@@ -8,6 +8,7 @@ using TMPro;
 public class UIManagerScript : MonoBehaviour {
     public AudioClip GameOverBgm;
     public static UIManagerScript Instance;
+    public Button CurrentDifficultyButton;
 
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
@@ -153,7 +154,15 @@ public class UIManagerScript : MonoBehaviour {
     public void OnApplicationQuit()
     {
         PlayerPrefs.DeleteAll();
-        _bgm.GetComponent<AudioSource>().clip = GameOverBgm;
-        _bgm.GetComponent<AudioSource>().Play();
+    }
+
+    public void SetCurrentDifficultyButton(Button inButton)
+    {
+        if (CurrentDifficultyButton != null)
+        {
+            CurrentDifficultyButton.interactable = true;
+        }
+        CurrentDifficultyButton = inButton;
+        CurrentDifficultyButton.interactable = false;
     }
 }
