@@ -35,7 +35,15 @@ public class UIManagerScript : MonoBehaviour {
 
     private void Start()
     {
-        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name == "GameScene" && PlayerPrefs.GetString("FirstTimeOpeningGame") != "false")
+        {
+            PlayerPrefs.SetString("FirstTimeOpeningGame", "false");
+            Time.timeScale = 0;
+            _tutorialPrefab.SetActive(true);
+        } else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     void Update () {

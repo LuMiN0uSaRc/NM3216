@@ -57,4 +57,9 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
