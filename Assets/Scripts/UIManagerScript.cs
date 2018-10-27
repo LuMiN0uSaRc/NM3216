@@ -19,6 +19,7 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _keyBindings;
     [SerializeField] GameObject _keyBindingsCloseButton;
     [SerializeField] GameObject _gameOverPanel;
+    [SerializeField] GameObject _creditsPanel;
     [SerializeField] AudioSource _bgm;
 
     public static bool _gameOverCheck = false;
@@ -105,6 +106,16 @@ public class UIManagerScript : MonoBehaviour {
     {
         _mainMenuPrefab.SetActive(false);
         _selectModePrefab.SetActive(true);
+    }
+
+    public void OpenCreditsPanel()
+    {
+        _creditsPanel.SetActive(true);
+    }
+
+    public void ClosePanel(GameObject inGameObject)
+    {
+        inGameObject.SetActive(false);
     }
 
     public void UpdateCurrentSelectedButton(string inDifficulty)
