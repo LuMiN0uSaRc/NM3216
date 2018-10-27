@@ -93,16 +93,6 @@ public class UIManagerScript : MonoBehaviour {
         }
     }
 
-    public void OpenTutorialPanel()
-    {
-        _tutorialPrefab.SetActive(true);
-    }
-
-    public void CloseTutorialPanel()
-    {
-        _tutorialPrefab.SetActive(false);
-    }
-
     public void OpenSetModePanel()
     {
         _mainMenuPrefab.SetActive(false);
@@ -119,6 +109,11 @@ public class UIManagerScript : MonoBehaviour {
     {
         Time.timeScale = 1;
         inGameObject.SetActive(false);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
     }
 
     public void UpdateCurrentSelectedButton(string inDifficulty)
