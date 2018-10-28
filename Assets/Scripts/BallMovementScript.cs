@@ -118,10 +118,11 @@ public class BallMovementScript : MonoBehaviour {
                 }
             }
 
-            //if (collision.collider.CompareTag("Ball"))
-            //{
-            //    Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-            //}
+            if (collision.collider.CompareTag("Ball"))
+            {
+                //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+                _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
+            }
         }
         _ifCollided = true;
     }
