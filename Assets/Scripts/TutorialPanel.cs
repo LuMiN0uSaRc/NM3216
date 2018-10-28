@@ -20,7 +20,14 @@ public class TutorialPanel : MonoBehaviour {
         {
             if (_currentIndex < 9)
             {
-                OpenNextPanel();
+                if (!TMPro.Examples.TeleType.Instance.ifFinishRevealing)
+                {
+                    TMPro.Examples.TeleType.Instance.RevealAllText();
+                }
+                else
+                {
+                    OpenNextPanel();
+                }
             }
             else
             {

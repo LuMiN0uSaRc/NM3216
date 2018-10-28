@@ -12,24 +12,31 @@ namespace TMPro.Examples
         //[Range(0, 100)]
         //public int RevealSpeed = 50;
 
-        private string label01 = "Example <sprite=2> of using <sprite=7> <#ffa000>Graphics Inline</color> <sprite=5> with Text in <font=\"Bangers SDF\" material=\"Bangers SDF - Drop Shadow\">TextMesh<#40a0ff>Pro</color></font><sprite=0> and Unity<sprite=1>";
-        private string label02 = "Example <sprite=2> of using <sprite=7> <#ffa000>Graphics Inline</color> <sprite=5> with Text in <font=\"Bangers SDF\" material=\"Bangers SDF - Drop Shadow\">TextMesh<#40a0ff>Pro</color></font><sprite=0> and Unity<sprite=2>";
-
+        //private string label01 = "Example <sprite=2> of using <sprite=7> <#ffa000>Graphics Inline</color> <sprite=5> with Text in <font=\"Bangers SDF\" material=\"Bangers SDF - Drop Shadow\">TextMesh<#40a0ff>Pro</color></font><sprite=0> and Unity<sprite=1>";
+        //private string label02 = "Example <sprite=2> of using <sprite=7> <#ffa000>Graphics Inline</color> <sprite=5> with Text in <font=\"Bangers SDF\" material=\"Bangers SDF - Drop Shadow\">TextMesh<#40a0ff>Pro</color></font><sprite=0> and Unity<sprite=2>";
+        public static TeleType Instance;
+        public bool ifFinishRevealing = false;
 
         private TextMeshProUGUI m_textMeshPro;
 
 
         void Awake()
         {
+            Instance = this;
             // Get Reference to TextMeshPro Component
             m_textMeshPro = GetComponent<TextMeshProUGUI>();
             m_textMeshPro.enableWordWrapping = true;
         }
 
 
-        IEnumerator Start()
+        void Start()
         {
+            StartCoroutine(RevealText());
+        }
 
+        IEnumerator RevealText()
+        {
+            ifFinishRevealing = false;
             // Force and update of the mesh to get valid information.
             m_textMeshPro.ForceMeshUpdate();
 
@@ -54,12 +61,20 @@ namespace TMPro.Examples
                 //}
 
                 counter += 1;
-
                 yield return new WaitForSecondsRealtime(0.02f);
                 //yield return null;
             }
-
+            ifFinishRevealing = true;
             //Debug.Log("Done revealing the text.");
+        }
+
+        public void RevealAllText()
+        {
+            StopAllCoroutines();
+            ifFinishRevealing = true;
+            int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount;
+            m_textMeshPro.maxVisibleCharacters = totalVisibleCharacters;
+            m_textMeshPro.ForceMeshUpdate();
         }
 
     }
