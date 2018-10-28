@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 12969120}
   - component: {fileID: 12969122}
   - component: {fileID: 12969121}
+  - component: {fileID: 12969123}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -490,6 +491,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 12969119}
+--- !u!114 &12969123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12969119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &43113372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1212,7 @@ GameObject:
   - component: {fileID: 103300604}
   - component: {fileID: 103300606}
   - component: {fileID: 103300605}
+  - component: {fileID: 103300607}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -1345,6 +1358,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103300603}
+--- !u!114 &103300607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 103300603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &105314652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,6 +2991,7 @@ GameObject:
   - component: {fileID: 205847530}
   - component: {fileID: 205847532}
   - component: {fileID: 205847531}
+  - component: {fileID: 205847533}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -3111,6 +3136,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205847529}
+--- !u!114 &205847533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205847529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &215674017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,6 +3836,7 @@ GameObject:
   - component: {fileID: 292663453}
   - component: {fileID: 292663455}
   - component: {fileID: 292663454}
+  - component: {fileID: 292663456}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -3944,6 +3981,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292663452}
+--- !u!114 &292663456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 292663452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &293243242
 GameObject:
   m_ObjectHideFlags: 0
@@ -10158,6 +10206,7 @@ GameObject:
   - component: {fileID: 862069120}
   - component: {fileID: 862069122}
   - component: {fileID: 862069121}
+  - component: {fileID: 862069123}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -10304,6 +10353,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862069119}
+--- !u!114 &862069123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862069119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &874124917
 GameObject:
   m_ObjectHideFlags: 0
@@ -10695,6 +10755,7 @@ GameObject:
   - component: {fileID: 890620081}
   - component: {fileID: 890620083}
   - component: {fileID: 890620082}
+  - component: {fileID: 890620084}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -10839,6 +10900,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 890620080}
+--- !u!114 &890620084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890620080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &892097798
 GameObject:
   m_ObjectHideFlags: 0
@@ -14126,6 +14198,7 @@ GameObject:
   - component: {fileID: 1229977380}
   - component: {fileID: 1229977382}
   - component: {fileID: 1229977381}
+  - component: {fileID: 1229977383}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -14270,6 +14343,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1229977379}
+--- !u!114 &1229977383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229977379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1238194889
 Prefab:
   m_ObjectHideFlags: 0
@@ -15430,6 +15514,7 @@ GameObject:
   - component: {fileID: 1328243218}
   - component: {fileID: 1328243220}
   - component: {fileID: 1328243219}
+  - component: {fileID: 1328243221}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -15574,6 +15659,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1328243217}
+--- !u!114 &1328243221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328243217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337896694
 GameObject:
   m_ObjectHideFlags: 0
@@ -15894,6 +15990,7 @@ GameObject:
   - component: {fileID: 1347539651}
   - component: {fileID: 1347539653}
   - component: {fileID: 1347539652}
+  - component: {fileID: 1347539654}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -16038,6 +16135,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1347539650}
+--- !u!114 &1347539654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1347539650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1352517778
 GameObject:
   m_ObjectHideFlags: 0
@@ -18847,6 +18955,7 @@ GameObject:
   - component: {fileID: 1691204182}
   - component: {fileID: 1691204184}
   - component: {fileID: 1691204183}
+  - component: {fileID: 1691204185}
   m_Layer: 5
   m_Name: Speech
   m_TagString: Untagged
@@ -18991,6 +19100,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1691204181}
+--- !u!114 &1691204185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1691204181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9094c5c777af3f14489e8947748e86e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1700212097
 GameObject:
   m_ObjectHideFlags: 0
