@@ -18,7 +18,7 @@ namespace TMPro.Examples
         public bool ifFinishRevealing = false;
 
         private TextMeshProUGUI m_textMeshPro;
-
+        private AudioSource _audioSource;
 
         void Awake()
         {
@@ -26,11 +26,14 @@ namespace TMPro.Examples
             // Get Reference to TextMeshPro Component
             m_textMeshPro = GetComponent<TextMeshProUGUI>();
             m_textMeshPro.enableWordWrapping = true;
+
+            _audioSource = gameObject.GetComponent<AudioSource>();
         }
 
 
         void Start()
         {
+            _audioSource.Play();
             StartCoroutine(RevealText());
         }
 
@@ -65,12 +68,14 @@ namespace TMPro.Examples
                 //yield return null;
             }
             ifFinishRevealing = true;
+            _audioSource.Stop();
             //Debug.Log("Done revealing the text.");
         }
 
         public void RevealAllText()
         {
             StopAllCoroutines();
+            _audioSource.Stop();
             ifFinishRevealing = true;
             int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount;
             m_textMeshPro.maxVisibleCharacters = totalVisibleCharacters;

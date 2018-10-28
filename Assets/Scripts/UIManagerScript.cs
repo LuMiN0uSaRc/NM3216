@@ -9,6 +9,7 @@ public class UIManagerScript : MonoBehaviour {
     public AudioClip GameOverBgm;
     public static UIManagerScript Instance;
     public Button CurrentDifficultyButton;
+    public TextMeshProUGUI ReminderText;
 
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
@@ -115,8 +116,25 @@ public class UIManagerScript : MonoBehaviour {
 
     public void ClosePanel(GameObject inGameObject)
     {
-        Time.timeScale = 1;
-        inGameObject.SetActive(false);
+        bool toClosePanel = true;
+        if (inGameObject.name == "KeyRebind")
+        {
+            for (int i = 0; i < 8; i ++)
+            {
+                if (KeyBindings.Instance.ListOfKeysText[i].text == "None")
+                {
+                    toClosePanel = false;
+                    ReminderText.gameObject.SetActive(true);
+                    ReminderText.color = new Color(ReminderText.color.r, ReminderText.color.g, ReminderText.color.b, 1);
+                    StartCoroutine(FadeTextAndMoveUp());
+                }
+            }
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        if (toClosePanel) inGameObject.SetActive(false);
     }
 
     public void ReturnToMainMenu()
@@ -134,30 +152,31 @@ public class UIManagerScript : MonoBehaviour {
     {
         if (!_gameOverCheck)
         {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-                _keyBindings.SetActive(true);
-                _keyBindingsCloseButton.SetActive(true);
-                for (int i = 0; i < 8; i++)
-                {
-                    KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                Time.timeScale = 1;
-                _keyBindings.SetActive(false);
-                _keyBindingsCloseButton.SetActive(false);
-                if (KeyBindings.Instance._currentKey != null)
-                {
-                    KeyBindings.Instance._currentKey.GetComponent<Button>().interactable = true;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(true);
-                }
-            }
+            _keyBindings.SetActive(true);
+
+            //if (Time.timeScale == 1)
+            //{
+            //    Time.timeScale = 0;
+            //    _keyBindingsCloseButton.SetActive(true);
+            //    for (int i = 0; i < 8; i++)
+            //    {
+            //        KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(false);
+            //    }
+            //}
+            //else
+            //{
+            //    Time.timeScale = 1;
+            //    _keyBindings.SetActive(false);
+            //    _keyBindingsCloseButton.SetActive(false);
+            //    if (KeyBindings.Instance._currentKey != null)
+            //    {
+            //        KeyBindings.Instance._currentKey.GetComponent<Button>().interactable = true;
+            //    }
+            //    for (int i = 0; i < 8; i++)
+            //    {
+            //        KeyBindings.Instance.ListOfKeysText[i].gameObject.SetActive(true);
+            //    }
+            //}
         }
     }
 
@@ -181,5 +200,26 @@ public class UIManagerScript : MonoBehaviour {
         }
         CurrentDifficultyButton = inButton;
         CurrentDifficultyButton.interactable = false;
+    }
+
+    IEnumerator FadeTextAndMoveUp()
+    {
+        float alpha = ReminderText.color.a;
+        float final = -1;
+        float rate = 1.0f / 0.75f;
+        float progress = 0.0f;
+        Color tempColor = ReminderText.color;
+
+        while (progress < 1.0f)
+        {
+            final = 0;
+            ReminderText.color = new Color(tempColor.r, tempColor.g, tempColor.b, Mathf.Lerp(alpha, final, progress));
+
+            progress += rate * 0.02f;
+            yield return null;
+        }
+        ReminderText.color = new Color(tempColor.r, tempColor.g, tempColor.b, final);
+        ReminderText.gameObject.SetActive(false);
+        progress = 0.0f;
     }
 }
