@@ -10,12 +10,14 @@ public class BallMovementScript : MonoBehaviour {
     private Vector2 _initialDirection;
     private bool _ifCollided = false;
     private AudioSource _audioSource;
+    private Animator _animator;
 
     //when fence appears, push the sheep back in
     //when sheep exits the area, gameover!
 
 	// Use this for initialization
 	void Start () {
+        _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
         //Initial Velocity
         _ballRigidBody = GetComponent<Rigidbody2D>();
@@ -33,6 +35,19 @@ public class BallMovementScript : MonoBehaviour {
         {
             if (collision.collider.CompareTag("Fence"))
             {
+                float randomValue = Random.value;
+                if (randomValue < 0.3)
+                {
+                    _animator.SetTrigger("Stun");
+                } 
+                else if (randomValue >= 0.3 && randomValue < 0.6)
+                {
+                    _animator.SetTrigger("Sad");
+                }
+                else
+                {
+                    _animator.SetTrigger("Angry");
+                }
                 GameManager.Instance.BallBounceCount++;
                 if (GameManager.Instance.numOfSoundPlaying < 2)
                 {
@@ -49,10 +64,10 @@ public class BallMovementScript : MonoBehaviour {
                 string difficulty = PlayerPrefs.GetString("Difficulty");
                 if (difficulty == "Easy")
                 {
-                    if (bounceCount == 5) SetBallSpeed(3);
-                    if (bounceCount == 10) SetBallSpeed(4);
-                    if (bounceCount == 15) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(6);
+                    if (bounceCount == 5) SetBallSpeed(2.5f);
+                    if (bounceCount == 10) SetBallSpeed(3);
+                    if (bounceCount == 15) SetBallSpeed(3.5f);
+                    if (bounceCount == 20) SetBallSpeed(4);
                     if (bounceCount == 25)
                     {     
                         SpawnSheep();
@@ -73,9 +88,9 @@ public class BallMovementScript : MonoBehaviour {
 
                 else if (difficulty == "Medium")
                 {
-                    if (bounceCount == 5) SetBallSpeed(4);
-                    if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 20) SetBallSpeed(7);
+                    if (bounceCount == 5) SetBallSpeed(3);
+                    if (bounceCount == 10) SetBallSpeed(3.5f);
+                    if (bounceCount == 20) SetBallSpeed(4);
                     if (bounceCount == 25)
                     {
 
@@ -83,8 +98,8 @@ public class BallMovementScript : MonoBehaviour {
                         SetBallSpeed(3);
                     }
                     if (bounceCount == 40) SetBallSpeed(3);
-                    if (bounceCount == 60) SetBallSpeed(5);
-                    if (bounceCount == 80) SetBallSpeed(7);
+                    if (bounceCount == 60) SetBallSpeed(4);
+                    if (bounceCount == 80) SetBallSpeed(5);
                     if (bounceCount == 100)
                     {
 
@@ -97,8 +112,8 @@ public class BallMovementScript : MonoBehaviour {
                 {
                     if (bounceCount == 5) SetBallSpeed(4);
                     if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 15) SetBallSpeed(7);
-                    if (bounceCount == 25) SetBallSpeed(9);
+                    if (bounceCount == 15) SetBallSpeed(6);
+                    if (bounceCount == 25) SetBallSpeed(7);
                     if (bounceCount == 30)
                     {
 
