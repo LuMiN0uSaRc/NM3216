@@ -8,7 +8,6 @@ public class BallMovementScript : MonoBehaviour {
 
     private Rigidbody2D _ballRigidBody;
     private Vector2 _initialDirection;
-    private bool _ifCollided = false;
     private AudioSource _audioSource;
     private Animator _animator;
 
@@ -29,122 +28,130 @@ public class BallMovementScript : MonoBehaviour {
         Invoke("GoBall", 3);
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Fence"))
+        {
+            //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider, true);
+            float xDirection = Random.Range(-1f, 1f);
+            float yDirection = Random.Range(-1f, 1f);
+            Vector2 _randomDirection = new Vector2(xDirection, yDirection).normalized;
+            _ballRigidBody.velocity = _randomDirection.normalized * BallSpeed;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!_ifCollided)
+        if (collision.collider.CompareTag("Ball"))
         {
-            if (collision.collider.CompareTag("Fence"))
-            {
-                float randomValue = Random.value;
-                if (randomValue < 0.3)
-                {
-                    _animator.SetTrigger("Stun");
-                } 
-                else if (randomValue >= 0.3 && randomValue < 0.6)
-                {
-                    _animator.SetTrigger("Sad");
-                }
-                else
-                {
-                    _animator.SetTrigger("Angry");
-                }
-                GameManager.Instance.BallBounceCount++;
-                if (GameManager.Instance.numOfSoundPlaying < 2)
-                {
-                    Invoke("IfAudioFinished", _audioSource.clip.length);
-                    _audioSource.Play();
-                    GameManager.Instance.numOfSoundPlaying++;
-                }
-                int bounceCount = GameManager.Instance.BallBounceCount;
-
-                //Update string 
-                GameManager.Instance._numberOfBounces.text = "Bounces: " + bounceCount.ToString();
-                GameManager.Instance._speedOfCharacter.text = "Speed: " + BallSpeed.ToString();
-
-                string difficulty = PlayerPrefs.GetString("Difficulty");
-                if (difficulty == "Easy")
-                {
-                    if (bounceCount == 5) SetBallSpeed(2.5f);
-                    if (bounceCount == 10) SetBallSpeed(3);
-                    if (bounceCount == 15) SetBallSpeed(3.5f);
-                    if (bounceCount == 20) SetBallSpeed(4);
-                    if (bounceCount == 25)
-                    {     
-                        SpawnSheep();
-                        SetBallSpeed(2);
-                    };
-
-                    if (bounceCount == 45) SetBallSpeed(3);
-                    if (bounceCount == 70) SetBallSpeed(5);
-                    if (bounceCount == 90)
-                    {
-                        SpawnSheep();
-                        SetBallSpeed(2);
-                    };
-                    if (bounceCount == 110) SetBallSpeed(3);
-                    if (bounceCount == 150) SetBallSpeed(5);
-
-                }
-
-                else if (difficulty == "Medium")
-                {
-                    if (bounceCount == 5) SetBallSpeed(3);
-                    if (bounceCount == 10) SetBallSpeed(3.5f);
-                    if (bounceCount == 20) SetBallSpeed(4);
-                    if (bounceCount == 25)
-                    {
-
-                        SpawnSheep();
-                        SetBallSpeed(3);
-                    }
-                    if (bounceCount == 40) SetBallSpeed(3);
-                    if (bounceCount == 60) SetBallSpeed(4);
-                    if (bounceCount == 80) SetBallSpeed(5);
-                    if (bounceCount == 100)
-                    {
-
-                        SpawnSheep();
-                        SetBallSpeed(2);
-                    }
-
-                }
-                else if (difficulty == "Hard")
-                {
-                    if (bounceCount == 5) SetBallSpeed(4);
-                    if (bounceCount == 10) SetBallSpeed(5);
-                    if (bounceCount == 15) SetBallSpeed(6);
-                    if (bounceCount == 25) SetBallSpeed(7);
-                    if (bounceCount == 30)
-                    {
-
-                        SpawnSheep();
-                        SetBallSpeed(3);
-                    }
-                    if (bounceCount == 40) SetBallSpeed(4);
-                    if (bounceCount == 50) SetBallSpeed(6);
-                    if (bounceCount == 75) SetBallSpeed(8);
-                    if (bounceCount == 100)
-                    {
-
-                        SpawnSheep();
-                        SetBallSpeed(3);
-                    }
-
-                }
-            }
-
-            if (collision.collider.CompareTag("Ball"))
-            {
-                //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-                _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
-            }
+            //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
         }
-        _ifCollided = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        _ifCollided = false;
+        //_ifStuck = false;
+
+        if (collision.collider.CompareTag("Fence"))
+        {
+            float randomValue = Random.value;
+            if (randomValue < 0.3)
+            {
+                _animator.SetTrigger("Stun");
+            }
+            else if (randomValue >= 0.3 && randomValue < 0.6)
+            {
+                _animator.SetTrigger("Sad");
+            }
+            else
+            {
+                _animator.SetTrigger("Angry");
+            }
+            GameManager.Instance.BallBounceCount++;
+            if (GameManager.Instance.numOfSoundPlaying < 2)
+            {
+                Invoke("IfAudioFinished", _audioSource.clip.length);
+                _audioSource.Play();
+                GameManager.Instance.numOfSoundPlaying++;
+            }
+            int bounceCount = GameManager.Instance.BallBounceCount;
+
+            //Update string 
+            GameManager.Instance._numberOfBounces.text = "Bounces: " + bounceCount.ToString();
+            GameManager.Instance._speedOfCharacter.text = "Speed: " + BallSpeed.ToString();
+
+            string difficulty = PlayerPrefs.GetString("Difficulty");
+            if (difficulty == "Easy")
+            {
+                if (bounceCount == 5) SetBallSpeed(2.5f);
+                if (bounceCount == 10) SetBallSpeed(3);
+                if (bounceCount == 15) SetBallSpeed(3.5f);
+                if (bounceCount == 20) SetBallSpeed(4);
+                if (bounceCount == 25)
+                {
+                    SpawnSheep();
+                    SetBallSpeed(2);
+                };
+
+                if (bounceCount == 45) SetBallSpeed(3);
+                if (bounceCount == 70) SetBallSpeed(5);
+                if (bounceCount == 90)
+                {
+                    SpawnSheep();
+                    SetBallSpeed(2);
+                };
+                if (bounceCount == 110) SetBallSpeed(3);
+                if (bounceCount == 150) SetBallSpeed(5);
+
+            }
+
+            else if (difficulty == "Medium")
+            {
+                if (bounceCount == 5) SetBallSpeed(3);
+                if (bounceCount == 10) SetBallSpeed(3.5f);
+                if (bounceCount == 20) SetBallSpeed(4);
+                if (bounceCount == 25)
+                {
+
+                    SpawnSheep();
+                    SetBallSpeed(3);
+                }
+                if (bounceCount == 40) SetBallSpeed(3);
+                if (bounceCount == 60) SetBallSpeed(4);
+                if (bounceCount == 80) SetBallSpeed(5);
+                if (bounceCount == 100)
+                {
+
+                    SpawnSheep();
+                    SetBallSpeed(2);
+                }
+
+            }
+            else if (difficulty == "Hard")
+            {
+                if (bounceCount == 5) SetBallSpeed(4);
+                if (bounceCount == 10) SetBallSpeed(5);
+                if (bounceCount == 15) SetBallSpeed(6);
+                if (bounceCount == 25) SetBallSpeed(7);
+                if (bounceCount == 30)
+                {
+
+                    SpawnSheep();
+                    SetBallSpeed(3);
+                }
+                if (bounceCount == 40) SetBallSpeed(4);
+                if (bounceCount == 50) SetBallSpeed(6);
+                if (bounceCount == 75) SetBallSpeed(8);
+                if (bounceCount == 100)
+                {
+
+                    SpawnSheep();
+                    SetBallSpeed(3);
+                }
+            }
+        }
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.collider, false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

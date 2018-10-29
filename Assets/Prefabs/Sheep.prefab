@@ -313,34 +313,34 @@ TrailRenderer:
   m_SortingLayerID: -2104932235
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Time: 3
+  m_Time: 5
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 3
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0.0066223145
-        value: 0.64834595
+        time: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.39073014
-        value: 0.42856938
+        time: 0.22186112
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
         time: 0.7019853
-        value: 0.69230646
+        value: 0.89010996
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.9867554
-        value: 0.34066105
+        time: 1
+        value: 0.9011049
         inSlope: 0
         outSlope: 0
         tangentMode: 0
