@@ -10,6 +10,8 @@ public class UIManagerScript : MonoBehaviour {
     public static UIManagerScript Instance;
     public Button CurrentDifficultyButton;
     public TextMeshProUGUI ReminderText;
+    public AudioClip BloopSound;
+    public AudioClip ClickSound;
 
     [SerializeField] TextMeshProUGUI _timerTextField;
     [SerializeField] GameObject _pauseScreenPrefab;
@@ -28,6 +30,7 @@ public class UIManagerScript : MonoBehaviour {
 
     private float _timeLeft = 3.0f;
     private GameObject _currentSelectedButton;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -221,5 +224,19 @@ public class UIManagerScript : MonoBehaviour {
         ReminderText.color = new Color(tempColor.r, tempColor.g, tempColor.b, final);
         ReminderText.gameObject.SetActive(false);
         progress = 0.0f;
+    }
+
+    public void PlayClickSound(GameObject inGameObject)
+    {
+        AudioSource audioSource = inGameObject.GetComponent<AudioSource>();
+        audioSource.clip = ClickSound;
+        audioSource.Play();
+    }
+
+    public void PlayHoverSound(GameObject inGameObject)
+    {
+        AudioSource audioSource = inGameObject.GetComponent<AudioSource>();
+        audioSource.clip = BloopSound;
+        audioSource.Play();
     }
 }
