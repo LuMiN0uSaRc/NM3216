@@ -5817,6 +5817,8 @@ MonoBehaviour:
   GameOverBgm: {fileID: 8300000, guid: c1e4f1762861a9643b0073cad38cc360, type: 3}
   CurrentDifficultyButton: {fileID: 0}
   ReminderText: {fileID: 1408585171}
+  BloopSound: {fileID: 0}
+  ClickSound: {fileID: 0}
   _timerTextField: {fileID: 1185553301}
   _pauseScreenPrefab: {fileID: 1238194891}
   _mainMenuPrefab: {fileID: 0}
@@ -12264,6 +12266,11 @@ Prefab:
         type: 2}
       propertyPath: m_MotionVectors
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 96703615483584880, guid: 96f19db5bc8df76419cc621470c8c0d9,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96f19db5bc8df76419cc621470c8c0d9, type: 2}
