@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public int numOfSoundPlaying = 0;
     public TextMeshProUGUI _numberOfBounces;
     public TextMeshProUGUI _speedOfCharacter;
+    public bool ifGameStarted = false;
 
     [SerializeField] PlayAreaInputScript playArea;
 

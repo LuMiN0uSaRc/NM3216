@@ -51,6 +51,13 @@ public class UIManagerScript : MonoBehaviour {
     }
 
     void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameManager.Instance.ifGameStarted == true)
+            {
+                PauseGame();
+            }
+        }
         if (_timerTextField != null)
         {
             _timeLeft -= Time.deltaTime;
@@ -86,12 +93,12 @@ public class UIManagerScript : MonoBehaviour {
             {
                 //game is playing
                 Time.timeScale = 0;
-                _pauseScreenPrefab.SetActive(true);
+                _settingsPanel.SetActive(true);
             }
             else
             {
                 ResumeGame();
-                _pauseScreenPrefab.SetActive(false);
+                _settingsPanel.SetActive(false);
             }
         }
     }
@@ -120,7 +127,11 @@ public class UIManagerScript : MonoBehaviour {
     public void ClosePanel(GameObject inGameObject)
     {
         bool toClosePanel = true;
-        if (inGameObject.name == "KeyRebind")
+        if (inGameObject.name == "Tutorial")
+        {
+            GameManager.Instance.ifGameStarted = true;
+        }
+        else if (inGameObject.name == "KeyRebind")
         {
             for (int i = 0; i < 8; i ++)
             {
@@ -143,6 +154,7 @@ public class UIManagerScript : MonoBehaviour {
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("StartScreen");
+        UIManagerScript._gameOverCheck = false;
     }
 
     public void UpdateCurrentSelectedButton(string inDifficulty)

@@ -16,7 +16,9 @@ public class TutorialPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
+        GameManager.Instance.ifGameStarted = false;
+
+        if (Input.GetMouseButtonDown(0))
         {
             if (_currentIndex < 9)
             {
@@ -33,6 +35,7 @@ public class TutorialPanel : MonoBehaviour {
             {
                 gameObject.SetActive(false);
                 Time.timeScale = 1;
+                GameManager.Instance.ifGameStarted = true;
             }
         }
 	}
