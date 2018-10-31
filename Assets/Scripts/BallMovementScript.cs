@@ -48,7 +48,6 @@ public class BallMovementScript : MonoBehaviour {
             _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
         }
 
-
         if (_ballRigidBody.velocity.x >= 0)
         {
             gameObject.transform.localScale = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
@@ -175,6 +174,15 @@ public class BallMovementScript : MonoBehaviour {
     {
         //_ballRigidBody.AddForce(_initialDirection * BallSpeed);
         _ballRigidBody.velocity = _initialDirection.normalized * BallSpeed;
+
+        if (_ballRigidBody.velocity.x >= 0)
+        {
+            gameObject.transform.localScale = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector2(Mathf.Abs(gameObject.transform.localScale.x), gameObject.transform.localScale.y);
+        }
     }
 
     private void ResetBall()
