@@ -1085,7 +1085,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Skip
+  m_text: Skip Intro
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea3418742fe66414b9e618bdc850ff41, type: 2}
   m_sharedMaterial: {fileID: 21255213909102788, guid: ea3418742fe66414b9e618bdc850ff41,
@@ -1113,8 +1113,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1154,10 +1154,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 89250823}
-    characterCount: 4
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -11180,8 +11180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334.49997, y: -187.89902}
-  m_SizeDelta: {x: 111.1, y: 42.2}
+  m_AnchoredPosition: {x: 329.8, y: 190}
+  m_SizeDelta: {x: 120.5, y: 38.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890329999
 MonoBehaviour:
