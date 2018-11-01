@@ -24,6 +24,7 @@ public class UIManagerScript : MonoBehaviour {
     [SerializeField] GameObject _gameOverPanel;
     [SerializeField] GameObject _creditsPanel;
     [SerializeField] GameObject _settingsPanel;
+    [SerializeField] GameObject _shortTutorialPanel;
     [SerializeField] AudioSource _bgm;
 
     public static bool _gameOverCheck = false;
@@ -47,15 +48,28 @@ public class UIManagerScript : MonoBehaviour {
         } else
         {
             Time.timeScale = 1;
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ifGameStarted = true;
+            }
         }
     }
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameManager.Instance.ifGameStarted == true)
+            if (!_shortTutorialPanel.activeSelf)
             {
-                PauseGame();
+                //pause screen is active
+                if (GameManager.Instance.ifGameStarted)
+                {
+                    PauseGame();
+                }
+            }
+            else
+            {
+                _shortTutorialPanel.SetActive(false);
+                Time.timeScale = 1;
             }
         }
         if (_timerTextField != null)
@@ -97,8 +111,17 @@ public class UIManagerScript : MonoBehaviour {
             }
             else
             {
-                ResumeGame();
-                _settingsPanel.SetActive(false);
+                //game is paused
+                if (_keyBindings.activeSelf)
+                {
+                    //keybindings panel is open
+                    _keyBindings.SetActive(false);
+                }
+                else
+                {
+                    ResumeGame();
+                    _settingsPanel.SetActive(false);
+                }
             }
         }
     }
@@ -129,6 +152,7 @@ public class UIManagerScript : MonoBehaviour {
         bool toClosePanel = true;
         if (inGameObject.name == "Tutorial")
         {
+            Time.timeScale = 1;
             GameManager.Instance.ifGameStarted = true;
         }
         else if (inGameObject.name == "KeyRebind")
